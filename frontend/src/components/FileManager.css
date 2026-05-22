@@ -1,0 +1,242 @@
+.file-manager-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(103, 126, 234, 0.15);
+  border: none;
+  border-radius: 8px;
+  color: #667eea;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.file-manager-toggle:hover {
+  background: rgba(103, 126, 234, 0.25);
+  transform: translateY(-1px);
+}
+
+.file-manager-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.file-manager-modal {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s;
+}
+
+.app.dark .file-manager-modal {
+  background: #2d2d2d;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.file-manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app.dark .file-manager-header {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.file-manager-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(244, 67, 54, 0.2);
+  transform: scale(1.1);
+}
+
+.file-manager-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.loading-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(103, 126, 234, 0.2);
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.empty-state small {
+  opacity: 0.6;
+}
+
+.files-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.file-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.app.dark .file-card {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.file-card:hover {
+  border-color: #667eea;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.file-card-icon {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.file-card-info {
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.file-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-card-meta {
+  font-size: 12px;
+  opacity: 0.6;
+  display: flex;
+  gap: 6px;
+}
+
+.file-card-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.app.dark .action-btn {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.download-btn:hover {
+  background: rgba(76, 175, 80, 0.2);
+  transform: scale(1.1);
+}
+
+.delete-btn:hover {
+  background: rgba(244, 67, 54, 0.2);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .file-manager-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .files-grid {
+    grid-template-columns: 1fr;
+  }
+}

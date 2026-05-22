@@ -1,0 +1,213 @@
+.saved-docs-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(103, 126, 234, 0.15);
+  border: none;
+  border-radius: 8px;
+  color: #667eea;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.saved-docs-btn:hover {
+  background: rgba(103, 126, 234, 0.25);
+  transform: translateY(-1px);
+}
+
+.saved-docs-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s;
+}
+
+.saved-docs-modal {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s;
+}
+
+.app.dark .saved-docs-modal {
+  background: #2d2d2d;
+}
+
+.saved-docs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app.dark .saved-docs-header {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.saved-docs-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.saved-docs-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.loading-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(103, 126, 234, 0.2);
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.empty-state small {
+  opacity: 0.6;
+}
+
+.documents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.document-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.app.dark .document-item {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.document-item:hover {
+  border-color: #667eea;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.doc-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.doc-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.doc-name {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.doc-meta {
+  font-size: 12px;
+  opacity: 0.6;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.delete-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  background: rgba(244, 67, 54, 0.2);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .saved-docs-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .doc-meta {
+    font-size: 11px;
+  }
+}
