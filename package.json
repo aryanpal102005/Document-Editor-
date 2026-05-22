@@ -1,0 +1,45 @@
+{
+  "name": "collab-editor",
+  "version": "2.0.0",
+  "description": "Real-time collaborative document editor with MongoDB, Socket.IO, and React",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm start",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "build": "cd frontend && npm run build",
+    "test": "cd backend && npm test && cd ../frontend && npm test",
+    "clean": "cd backend && rmdir /s /q node_modules && cd ../frontend && rmdir /s /q node_modules",
+    "dev": "concurrently \"cd backend && npm start\" \"cd frontend && npm start\""
+  },
+  "keywords": [
+    "collaborative",
+    "editor",
+    "real-time",
+    "socket.io",
+    "react",
+    "mongodb",
+    "websocket"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/collab-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/collab-editor/issues"
+  },
+  "homepage": "https://github.com/your-username/collab-editor#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "mongoose": "^9.6.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}
